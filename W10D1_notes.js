@@ -39,12 +39,26 @@ Route Handlers
     Response Methods
         send (plain text or JSON)
         json (always sends JSON)
+        -----
+        render(render server side html)
+        redirect
     app.<method>(<path>, (<middleware>) => { <response> })
 
 Our first Global Middleware
     express.json() => Allow us to parse request body
 
 !! Express works top => down !!
+
+Important Request Object Properties
+    req.body
+        Where request body content can be found
+        Requires app.use(express.json()) global middleware
+    req.params
+        Dynamic piece of the path
+        Use a ":" in the path to signify a param
+    req.query
+        Dynamic piece of the path
+        Starts with a "?" in the URL
 
 
 */
