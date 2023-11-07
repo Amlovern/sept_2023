@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
 
+const nameRouter = require('./routes/route.js');
+
 app.use(express.json());
+app.use('/name', nameRouter);
 
 app.use((req, res, next) => {
     console.log(`initial path: ${req.path}`);
@@ -36,21 +39,6 @@ app.get(['/test', '/status'], (req, res) => {
 
 app.post('/create', checkUserInput, (request, response) => {
     response.json(request.body)
-});
-
-app.get('/name/:artistId', (req, res) => {
-    console.log(req.params)
-    // const artistId = req.params.artistId;
-    const { artistId } = req.params;
-    res.send(`The artist ID is ${artistId}`)
-});
-
-app.get('/name', (req, res) => {
-    console.log(req.query);
-    // const actor = req.query.actorName;
-    const { actorName } = req.query;
-
-    res.send(`The actor's name is ${actorName}`)
 });
 
 // Format 404 Error

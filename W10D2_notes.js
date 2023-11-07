@@ -18,4 +18,21 @@ When anything is passed into next, Express behavior changes
     To handle that error, we have to create a way to catch it
     Express assumes that a route handler isn't meant to take in an error
 
+Error Handling Middleware
+    Takes in a 4th arg
+    Generally its at the end of the pipeline
+    When we generate a new error, we can add a message property, and we should add a statusCode property.
+    Why should we do all this work in setting up an error handling middleware instead of having it in the routes?
+        Readability
+        SRP/DRY
+
+
+Routers
+    An extension of our app object
+    Router behaves like app in many ways, but not all
+        It can't listen to a port, but it has all of the methods
+    We have to connect our router to the app
+    We can add a prefix to ensure that only related requests hit the route
+        We have to remember that the prefix is removed from the path in the router file
+
 */
