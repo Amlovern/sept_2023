@@ -8,11 +8,12 @@ app.use((req, res, next) => {
     next()
 });
 
-app.use((req, res, next) => {
-    console.log('error test');
-    const error = 'There was an error :(';
-    next(error)
-})
+// app.use((req, res, next) => {
+//     console.log('error test');
+//     const error = new Error('There was an error :(');
+//     // error.statusCode = 401;
+//     next(error)
+// })
 
 const nameWelcome = (req, res, next) => {
     console.log('Welcome to Name endpoints');
@@ -50,12 +51,30 @@ app.get('/name', (req, res) => {
     const { actorName } = req.query;
 
     res.send(`The actor's name is ${actorName}`)
+});
+
+// Format 404 Error
+app.use((req, res, next) => {
+    const notFoundErr = new Error (`${req.path} not found.`);
+    notFoundErr.statusCode = 404;
+    next(notFoundErr)
 })
 
+// Error Handling Middleware
 app.use((err, req, res, next) => {
-    console.log(err);
-    res.status(500);
-    res.send(err)
+    console.log(err.message);
+    // let status;
+    // if (err.statusCode) {
+    //     status = err.statusCode
+    // } else {
+    //     status = 500
+    // }
+    const status = err.statusCode || 500;
+    res.status(status);
+    res.json({
+        message: err.message || 'Something went wrong...',
+        status
+    })
 })
 
 app.listen(8000, () => console.log('Listening on port 8000...'))
