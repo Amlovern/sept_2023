@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
 
 const nameRouter = require('./routes/route.js');
 
@@ -34,6 +35,7 @@ const checkUserInput = (req, res, next) => {
 }
 
 app.get(['/test', '/status'], (req, res) => {
+    console.log('env variable', process.env.MESSAGE)
     res.send('Hello from npm start')
 });
 
@@ -65,4 +67,4 @@ app.use((err, req, res, next) => {
     })
 })
 
-app.listen(8000, () => console.log('Listening on port 8000...'))
+app.listen(process.env.PORT, () => console.log('Listening on port 8000...'))
