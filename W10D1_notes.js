@@ -60,5 +60,7 @@ Important Request Object Properties
         Dynamic piece of the path
         Starts with a "?" in the URL
 
+Important to note that routes should be in order of most specific => least specific
+
 
 */
