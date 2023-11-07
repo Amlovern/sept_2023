@@ -35,4 +35,20 @@ Routers
     We can add a prefix to ensure that only related requests hit the route
         We have to remember that the prefix is removed from the path in the router file
 
+
+Environment Variables
+    There are a few common environments
+        Production
+        Development (dev)
+        Testing - underused
+    Why do we need env variables?
+        To obscure sensitive information
+    There are a couple ways to implement env variables
+        Through the CLI
+        Add them to the script
+        Create a .env file
+            Always add the .env file to your .gitignore
+            Install dotenv and dotenv-cli packages
+            The .env file should be on the same level as your package.json
+
 */
