@@ -46,4 +46,20 @@ For apostrophes, we use 2 single quotation marks
 
 We can run '.headers on' and '.mode column' to make our queries easier to read.
 
+
+How to query our DB using SQL
+All queries need at least 2 statements: SELECT and FROM
+    SELECT - Which columns do we want returned?
+    FROM - Which table are we querying?
+Why might it be important to specify which columns we want instead of just getting everything?
+    The amount of data we are transmitting matters
+We can filter our responses!
+    WHERE - Target specific values or sets of values
+        Can chain multiple filters using AND/OR
+
+
+Deleting and Updating data in the DB
+    Delete - DELETE FROM <table name> WHERE <condition>;
+    Update - UPDATE <table name> SET <column name> = <value> WHERE <condition>;
+
 */
