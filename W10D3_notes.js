@@ -23,4 +23,16 @@ We can create a .sql file to write our SQL commands in
     To run a .sql file, we run the ".read <file name>" command in our sqlite terminal
 
 
+To create a table, we follow this format:
+CREATE TABLE <table name> (
+    <column name> <data type> <attributes>
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    <CONTINUE FILLING IN TABLE>
+);
+
+SQL does not like trailing commas, and we must add the semicolon
+
+To remove a table, we follow this format:
+DROP TABLE <table name>;
+
 */
