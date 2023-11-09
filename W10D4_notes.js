@@ -22,4 +22,27 @@ What about deleting?
     ON DELETE CASCADE
     ON DELETE SET NULL
 
+
+More Query Operators
+    BETWEEN - inclusive
+        WHERE <column> BETWEEN <value 1> AND <value 2> 
+    IN - something is true from a group of possibilities
+        WHERE <column> IN (<comma separated values>)
+    LIKE - search for partial strings *% acts as wildcard*
+        WHERE <column> LIKE %<partial string>%
+        in SQLite, this is case insensitive
+        3 Patterns:
+            Start with: '<string>%'
+            Ends with: '%<string>'
+            Includes: '%<string>%'
+    ORDER BY - allows us to go against the default ordering behavior
+        ORDER BY <column>
+        Default order is ASC, but can add DESC to the command to change it
+        Can order by multiple factors by adding more columns separated by a comma
+    LIMIT - only return a certain number of records
+        LIMIT <value>
+    OFFSET - skip a certain number of records
+        OFFSET <value>
+        Can only be used in conjunction with LIMIT
+
 */
