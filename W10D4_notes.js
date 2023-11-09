@@ -44,5 +44,10 @@ More Query Operators
     OFFSET - skip a certain number of records
         OFFSET <value>
         Can only be used in conjunction with LIMIT
+    We can perform mathematical operations to our columns within a SELECT
+        SELECT <column> + <value> FROM <table>;
+        This doesn't actually change the data in the DB
+    We can alias our columns in a SELECT
+        SELECT <column> AS <alias> FROM <table>;
 
 */
