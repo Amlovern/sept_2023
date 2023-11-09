@@ -10,3 +10,25 @@ WHERE name = 'King Arthur';
 
 UPDATE heroes SET region_of_origin = 'Greece'
 WHERE region_of_origin = 'Rome';
+
+SELECT * FROM heroes
+WHERE year_of_origin BETWEEN -1000 AND 1000;
+
+SELECT * FROM heroes
+WHERE region_of_origin IN ('Greece', 'Rome', 'Norse');
+
+SELECT * FROM heroes
+WHERE name LIKE 'beo%';
+
+WHERE email LIKE '%@%.%';
+
+SELECT * FROM heroes
+ORDER BY year_of_origin DESC;
+
+SELECT * FROM heroes
+ORDER BY deity_status_id DESC, year_of_origin DESC;
+
+SELECT * FROM heroes
+ORDER BY year_of_origin
+LIMIT 1
+OFFSET 1;
