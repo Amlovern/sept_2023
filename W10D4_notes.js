@@ -18,5 +18,8 @@ There are a couple ways to establish a FK in a CREATE TABLE
     We can combine into the column
         <col name> INTEGER REFERENCES <other table>(<pk>)
 
+What about deleting?
+    ON DELETE CASCADE
+    ON DELETE SET NULL
 
 */
