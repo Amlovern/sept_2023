@@ -50,4 +50,13 @@ More Query Operators
     We can alias our columns in a SELECT
         SELECT <column> AS <alias> FROM <table>;
 
+
+Writing queries that join different tables together
+    JOIN <other table> ON (<table>.id = <other table>.<FK column>)
+    The ON keyword is what tells SQL what the association is and how to combine them
+    The order of the values in our ON statemend doesn't matter
+    Use dot notation to deal with column name ambiguity
+    The order of our JOIN statements is determined by the path we have to follow to connect all the tables
+
+
 */
