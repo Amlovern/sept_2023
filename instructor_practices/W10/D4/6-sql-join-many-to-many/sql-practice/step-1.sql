@@ -3,3 +3,7 @@
 -- join table on to one side of the relationship, then JOINing the other side
 -- on to the join table.
 -- Your code here 
+SELECT first_name, type
+FROM musician_instruments
+JOIN musicians ON (musician_instruments.musician_id = musicians.id)
+JOIN instruments ON (musician_instruments.instrument_id = instruments.id);
