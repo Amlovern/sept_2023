@@ -32,3 +32,9 @@ SELECT * FROM heroes
 ORDER BY year_of_origin
 LIMIT 1
 OFFSET 1;
+
+SELECT *, (year_of_origin / 100) + 1 AS 'Century'
+FROM heroes;
+
+SELECT name AS 'secret identity', region_of_origin AS 'home', mortal_enemy AS 'archnemesis'
+FROM heroes;
