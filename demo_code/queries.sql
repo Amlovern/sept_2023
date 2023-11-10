@@ -66,3 +66,32 @@ SELECT * FROM heroes
 JOIN deity_status ON (deity_status.id = heroes.deity_status_id)
 WHERE deity_status.name='demi-god'
 AND heroes.year_of_origin BETWEEN -300 AND 800;
+
+
+SELECT AVG(year_of_origin)
+FROM heroes;
+
+SELECT COUNT(*)
+FROM heroes;
+
+SELECT MIN(year_of_origin)
+FROM heroes;
+
+SELECT MAX(year_of_origin)
+FROM heroes;
+
+SELECT SUM(year_of_origin)
+FROM heroes;
+
+SELECT TOTAL(year_of_origin)
+FROM heroes
+WHERE region_of_origin = 'Norse';
+
+SELECT TOTAL(year_of_origin), region_of_origin
+FROM heroes
+GROUP BY region_of_origin;
+
+SELECT TOTAL(year_of_origin), region_of_origin
+FROM heroes
+GROUP BY region_of_origin
+HAVING TOTAL(year_of_origin) <= 0;
