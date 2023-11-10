@@ -95,3 +95,37 @@ SELECT TOTAL(year_of_origin), region_of_origin
 FROM heroes
 GROUP BY region_of_origin
 HAVING TOTAL(year_of_origin) <= 0;
+
+-- All of the heroes with 'god' deity_status
+SELECT name FROM heroes
+WHERE deity_status_id = (
+    SELECT id FROM deity_status
+    WHERE name = 'god'
+);
+
+--What do I have?
+-- deity_status called 'god'
+-- I have a FK called deity_status_id
+
+-- what info do I need?
+-- What id on deity_status relates to 'god'
+
+
+-- All the famous feats of heroes who are human
+SELECT feat FROM famous_feats
+WHERE id IN (
+    SELECT famous_feat_id FROM heroes
+    WHERE deity_status_id = (
+        SELECT id FROM deity_status
+        WHERE name = 'human'
+    )
+);
+
+SELECT feat FROM famous_feats
+WHERE id IN (
+    SELECT famous_feat_id FROM heroes
+    WHERE deity_status_id = 3
+);
+
+SELECT feat FROM famous_feats
+WHERE id IN (7, 8, 4);
