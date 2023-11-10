@@ -45,4 +45,16 @@ At this point, we have talked about all of the SQL keywords:
         OFFSET
 
 
+Subqueries
+    Kind of like helper functions in SQL
+    Can generally be used to replace JOIN ON
+    Can also be used to get info across multiple tables if they don't have a relationship
+
+    When writing a subquery, we should ask 2 questions:
+        What info do I have?
+        What info do I need?
+
+    The purpose of a subquery is to return some info that the outer query can use
+
+
 */
