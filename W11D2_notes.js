@@ -86,4 +86,11 @@ To reset the database:
 Table reset command
     "dbreset": "npx dotenv sequelize db:seed:undo:all && npx dotenv sequelize db:migrate:undo:all && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all"
 
+Using migrations for something other than creating tables
+    Why is it better for a table change to happen in a different migration file instead of changing a pre-existing file?
+We need to start by creating a new migration file
+    npx sequelize migration:generate --name <descriptive name>
+If we set allowNull: false in the new column, we run into an error
+    We get around this error by setting a defaultValue
+
 */
