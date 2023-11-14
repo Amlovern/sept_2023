@@ -56,11 +56,25 @@ Models
 
 Seeders
     For inserting data into our tables
+    CLI Commands:
+        npx sequelize seed:generate --name <name>
+        npx dotenv sequelize db:seed:all
+            Run all seeders that haven't been ran
+        npx dotenv sequelize db:seed:undo
+            Roll back the most recent seed file
+        npx dotenv sequelize db:seed:undo:all
+            Roll back all of the seed files
+    Important Notes:
+        The seeder bulkInsert method tests against our DB-level constraints, but not against the model-level constraints
 
 How do we know if we need to add "dotenv" to our command?
     If we are JUST creating a file, no dotenv
     If we are interacting with the DB, add dotenv
 
 Column names switch from snake_case to camelCase
+
+queryInterface is an object built into Sequelize, and it has a ton of built-in methods
+
+The seederStorage property in our config/database.js file is what gives us the SequelizeData file in our DB
 
 */
