@@ -17,7 +17,18 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING(8),
       allowNull: false,
-      unique: true
+      unique: true,
+      validate: {
+        // isIn: {
+        //   args: [['god', 'demi-god', 'human']],
+        //   msg: 'Invalid Status'
+        // }
+        customIsIn(value) {
+          if (!['god', 'demi-god', 'human'].includes(value)) {
+            throw new Error('Invalid Status')
+          }
+        }
+      }
     }
   }, {
     sequelize,

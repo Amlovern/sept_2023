@@ -77,4 +77,13 @@ queryInterface is an object built into Sequelize, and it has a ton of built-in m
 
 The seederStorage property in our config/database.js file is what gives us the SequelizeData file in our DB
 
+To reset the database:
+    npx dotenv sequelize db:seed:undo:all
+    npx dotenv sequelize db:migrate:undo:all
+    npx dotenv sequelize db:migrate
+    npx dotenv sequelize db:seed:all
+
+Table reset command
+    "dbreset": "npx dotenv sequelize db:seed:undo:all && npx dotenv sequelize db:migrate:undo:all && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all"
+
 */
