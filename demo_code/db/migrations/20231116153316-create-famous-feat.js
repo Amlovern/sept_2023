@@ -13,6 +13,13 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
+      // heroId: {
+      //   type: Sequelize.INTEGER,
+      //   references: {
+      //     model: 'Heros'
+      //   },
+      //   allowNull: false
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

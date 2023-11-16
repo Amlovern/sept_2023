@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Op } = require("sequelize");
-const { Hero } = require('../db/models')
+const { Hero, DeityStatus, Ability } = require('../db/models')
 
 router.get('/', async (req, res) => {
     const heros = await Hero.findAll({
@@ -34,6 +34,34 @@ router.get('/search', async (req, res) => {
 
     res.json(heros)
 });
+
+router.get('/deitystatus', async (req, res) => {
+    const heros = await Hero.findAll({
+        include: {
+            attributes: ['name'],
+            model: DeityStatus,
+            where: {
+                name: 'human'
+            }
+        },
+    });
+
+    res.json(heros)
+});
+
+router.get('/abilities', async (req, res) => {
+    const heros = await Hero.findAll({
+        include: {
+            model: Ability,
+            through: {
+                attributes: []
+            }
+        }
+    });
+    
+
+    res.json(heros)
+})
 
 router.get('/:region', async (req, res) => {
     const hero = await Hero.findOne({

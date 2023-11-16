@@ -15,7 +15,6 @@ module.exports = {
     */
    await FamousFeat.bulkCreate([
     {feat: 'created the imperial regalia'},
-    {feat: 'gave fire to humans'},
     {feat: 'lifted Mjolnir'},
     {feat: 'slaying the trojan prince'},
     {feat: 'became a pharaoh of Egypt'},

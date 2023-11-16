@@ -10,14 +10,20 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      FamousFeat.belongsTo(models.Hero)
+      // FamousFeat.belongsTo(models.Hero, {
+      //   foreignKey: 'heroId'
+      // })
     }
   }
   FamousFeat.init({
     feat: {
       type: DataTypes.TEXT,
       allowNull: false
-    }
+    },
+    // heroId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false
+    // }
   }, {
     sequelize,
     modelName: 'FamousFeat',
