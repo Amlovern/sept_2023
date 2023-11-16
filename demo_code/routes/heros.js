@@ -33,7 +33,7 @@ router.get('/search', async (req, res) => {
     });
 
     res.json(heros)
-})
+});
 
 router.get('/:region', async (req, res) => {
     const hero = await Hero.findOne({
@@ -85,7 +85,37 @@ router.post('/create', async (req, res) => {
     });
 
     res.json(newHero)
-})
+});
+
+router.put('/:heroName', async (req, res) => {
+    const { name,  regionOfOrigin, weakness, mortalEnemy, yearOfOrigin } = req.body;
+
+    const hero = await Hero.findOne({
+        where: {
+            name: req.params.heroName
+        }
+    });
+
+    if (name) {
+        hero.name = name;
+    };
+    hero.weakness = weakness || hero.weakness;
+    hero.mortalEnemy = mortalEnemy !== undefined ? mortalEnemy : hero.mortalEnemy;
+    hero.regionOfOrigin = regionOfOrigin !== undefined ? regionOfOrigin : hero.regionOfOrigin;
+    yearOfOrigin !== undefined ? hero.yearOfOrigin = yearOfOrigin : null;
+
+    await hero.save();
+
+    res.json(hero)
+});
+
+router.delete('/:heroId', async (req, res) => {
+    const heroToByDestroyed = await Hero.findByPk(req.params.heroId);
+
+    await heroToByDestroyed.destroy();
+
+    res.json(heroToByDestroyed);
+});
 
 
 module.exports = router;

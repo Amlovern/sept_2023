@@ -32,6 +32,23 @@ POST route
 
     Using the build method allows us to be modular in our control over the process
 
+Updating/Deleting in Sequelize
+
+Update
+    <model>.update - NOT recommended
+        This requires a where
+    Object property assignment - MAJOR preference
+        must save()
+    <instance>.update()
+    <instance>.set()
+        must save()
+
+    We have to make sure that we are not accidentally updating our properties to undefined
+
+Delete
+    <model>.destroy() - NOT recommended
+    <instance>.destroy()
+
 
 
 */
