@@ -10,7 +10,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      DeityStatus.hasMany(models.Hero, {
+        foreignKey: 'deityStatusId',
+        onDelete: 'CASCADE',
+        hooks: true
+      })
+      // FROM DeityStatuses
+      // JOIN Heros ON (DeityStatuses.id = Heros.deityStatusId)
     }
   }
   DeityStatus.init({

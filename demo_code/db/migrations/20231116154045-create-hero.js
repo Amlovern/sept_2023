@@ -15,12 +15,23 @@ module.exports = {
         unique: true
       },
       deityStatusId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+        // REFERENCES DeityStatuses(id)
+          model: 'DeityStatuses',
+          key: 'id'
+        },
+        onDelete: 'SET NULL'
       },
       famousFeatId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true
+        unique: true,
+        references: {
+          model: 'FamousFeats',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
       },
       regionOfOrigin: {
         type: Sequelize.STRING(75),

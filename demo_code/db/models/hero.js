@@ -10,7 +10,21 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Hero.hasOne(models.FamousFeat, {
+        foreignKey: 'famousFeatId'
+      });
+
+      Hero.belongsTo(models.DeityStatus, {
+        foreignKey: 'deityStatusId'
+      });
+      // FROM Heros
+      // JOIN DeityStatuses ON (DeityStatuses.id = Heros.deityStatusId)
+      
+      Hero.belongsToMany(models.Ability, {
+        through: models.HeroAbility,
+        foreignKey: 'heroId',
+        otherKey: 'abilityId'
+      })
     }
   }
   Hero.init({
