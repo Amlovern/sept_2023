@@ -20,6 +20,18 @@ To change the default order, we add an order key to our query object
 
 If we want to use LIKE in our query, we can do that using Op
 
+POST route
+
+    Creating records
+        build
+          (validate)
+        save
+
+        create
+            Create does all of the other 3
+
+    Using the build method allows us to be modular in our control over the process
+
 
 
 */
