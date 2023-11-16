@@ -81,6 +81,23 @@ Associations
     JOIN HeroAbilities ON (...)
     JOIN Abilities ON (...)
 
+Implementing these relationships in our Express
+    We add the attributes of a related table by using the "include" property in our query obj
+        That include property points to the related Model
+        We must import the model that we are referencing
+    
+    The include property can also point to an array of Models to connect
+
+    The include property can also point to an obj
+        include: {
+            model: <model name>
+        }
+
+    You can nest includes to continue the chain of associations
+
+    In our includes, we can add an "through" property to access the joins table information
+        If we don't want any of the joins table info, we can add attributes: [] in our through obj
+
 
 
 */

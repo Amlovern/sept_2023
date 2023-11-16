@@ -17,7 +17,7 @@ module.exports = {
     {
       name: 'Hercules',
       deityStatusId: 2,
-      famousFeatId: 6,
+      famousFeatId: 5,
       regionOfOrigin: 'Rome',
       weakness: 'temper',
       mortalEnemy: 'Antaeus',
@@ -26,7 +26,7 @@ module.exports = {
     {
       name: 'Thor',
       deityStatusId: 1,
-      famousFeatId: 3,
+      famousFeatId: 2,
       regionOfOrigin: 'Norse',
       weakness: 'certain magics',
       mortalEnemy: 'Loki',
@@ -35,7 +35,7 @@ module.exports = {
     {
       name: 'Horus',
       deityStatusId: 1,
-      famousFeatId: 5,
+      famousFeatId: 4,
       regionOfOrigin: 'Egypt',
       weakness: 'women',
       mortalEnemy: 'Set',
@@ -44,7 +44,7 @@ module.exports = {
     {
       name: 'King Arthur',
       deityStatusId: 3,
-      famousFeatId: 7,
+      famousFeatId: 6,
       regionOfOrigin: 'British Isles',
       weakness: 'glory hungry',
       mortalEnemy: 'Mordred',
@@ -53,7 +53,7 @@ module.exports = {
     {
       name: 'Beowulf',
       deityStatusId: 3,
-      famousFeatId: 8,
+      famousFeatId: 7,
       regionOfOrigin: 'Norse',
       weakness: 'arrogance',
       mortalEnemy: 'Grendel',
@@ -71,7 +71,7 @@ module.exports = {
     {
       name: 'Achilles',
       deityStatusId: 3,
-      famousFeatId: 4,
+      famousFeatId: 3,
       regionOfOrigin: 'Greece',
       weakness: 'bad ankle',
       mortalEnemy: 'Paris',
