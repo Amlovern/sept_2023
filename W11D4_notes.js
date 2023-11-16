@@ -50,5 +50,37 @@ Delete
     <instance>.destroy()
 
 
+Relationships in Sequelize
+    To tell Sequelize that a column is a FK, we have to update our Migration file
+    references: {
+        model: <table name>,
+        key: 'id' (not needed unless the PK is something besides id)
+    }
+    onDelete: 'CASCADE' (if desired)
+
+Associations
+    One-to-One
+        hasOne - not used much
+    One-to-Many
+        belongsTo
+        hasMany
+        We have to determine which is which and the order does matter
+        The model with FK is the belongsTo
+        <model we are in>.<relationship>(models.<name of the model we are connecting to>, {
+            foreignKey: <name of the FK used to connect>
+        })
+        In order to CASCADE, we have to add some additional stuff to the hasMany
+    Many-to-Many
+        belongsToMany(models.<name of model on other side of joins table>, {
+            through: models.<name of join table>,
+            foreignKey: <FK to join to the join table>,
+            otherKey: <FK to join from joins table to other table>
+        })
+
+    FROM Heros
+    JOIN HeroAbilities ON (...)
+    JOIN Abilities ON (...)
+
+
 
 */
