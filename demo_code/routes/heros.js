@@ -19,7 +19,6 @@ router.get('/:heroId(\\d+)', async (req, res) => {
     res.json(hero)
 });
 
-
 // take in a query string, return all heroes
 // whose name includes that string
 router.get('/search', async (req, res) => {
@@ -45,6 +44,48 @@ router.get('/:region', async (req, res) => {
 
     res.json(hero);
 });
+
+router.post('/build', async (req, res) => {
+    const { name, deityStatusId, famousFeatId, regionOfOrigin, weakness, mortalEnemy, yearOfOrigin } = req.body;
+
+    const newHero = Hero.build({
+        name, // name: name
+        deityStatusId,
+        famousFeatId,
+        regionOfOrigin,
+        weakness,
+        mortalEnemy,
+        yearOfOrigin
+    });
+
+    // do some other stuff
+
+    await newHero.validate();
+
+    // handle validation errors
+
+    await newHero.save();
+
+    // do something with the saved object
+
+    res.json(newHero)
+});
+
+router.post('/create', async (req, res) => {
+    const { name, deityStatusId, famousFeatId, regionOfOrigin, weakness, mortalEnemy, yearOfOrigin } = req.body;
+
+    const newHero = await Hero.create({
+        name, // name: name
+        deityStatusId,
+        famousFeatId,
+        regionOfOrigin,
+        weakness,
+        mortalEnemy,
+        yearOfOrigin
+    });
+
+    res.json(newHero)
+})
 
 
 module.exports = router;
