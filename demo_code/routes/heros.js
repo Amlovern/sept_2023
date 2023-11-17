@@ -19,6 +19,84 @@ router.get('/:heroId(\\d+)', async (req, res) => {
     res.json(hero)
 });
 
+router.get('/association/getter', async (req, res) => {
+    const heros = await Hero.findAll();
+    const resArr = [];
+    
+    for (let i = 0; i < heros.length; i++) {
+        let hero = heros[i];
+        const deityStatus = await hero.getDeityStatus();
+        hero = hero.toJSON()
+        hero.deityStatus = deityStatus;
+        resArr.push(hero)
+    }
+
+    res.json({
+        heros: resArr
+    });
+})
+
+router.post('/association/create', async (req, res) => {
+    const status = await DeityStatus.findOne({
+        where: {
+            name: 'human'
+        }
+    });
+    const newHero = await status.createHero({
+        name: 'Anthony',
+        famousFeatId: 8,
+        regionOfOrigin: 'USA',
+        weakness: 'Runescape',
+        mortalEnemy: 'Var',
+        yearOfOrigin: 1992
+    });
+
+    res.json(newHero)
+});
+
+router.post('/association/add', async (req, res) => {
+    const hero = await Hero.findOne({
+        where: {
+            name: 'Anthony'
+        }
+    });
+
+    const ability = await Ability.findOne({
+        where: {
+            name: 'super strength'
+        }
+    })
+
+    const newPowers = await hero.addAbility(ability.id);
+
+    res.json(newPowers)
+});
+
+router.get('/aggregate', async (req, res) => {
+    let hero = await Hero.findByPk(1);
+    const minYear = await Hero.min('yearOfOrigin', {
+        where: {
+            deityStatusId: 3
+        }
+    });
+    const maxYear = await Hero.max('yearOfOrigin');
+    const numHeros = await Hero.count();
+    // const numHeros = heros.length;
+    const yearSum = await Hero.sum('yearOfOrigin');
+    const avgYear = yearSum / numHeros;
+
+    hero = hero.toJSON();
+    hero.minYear = minYear;
+    hero.maxYear = maxYear;
+    hero.numHeros = numHeros;
+    hero.yearSum = yearSum;
+    hero.avgYear = avgYear;
+
+    res.json({
+        hero
+    })
+})
+
 // take in a query string, return all heroes
 // whose name includes that string
 router.get('/search', async (req, res) => {
