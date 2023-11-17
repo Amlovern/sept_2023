@@ -25,25 +25,25 @@ app.get('/toys-summary', async (req, res, next) => {
         STEP 1A: Calculate the total number of all the toy records.
         Set it to a variable called `count`.
     */
-    // Your code here 
+    let count = await Toy.count()
 
     /*
         STEP 1B: Calculate the minimum price of all the toy records.
         Set it to a variable called `minPrice`.
     */
-    // Your code here 
+    let minPrice = await Toy.min('price')
 
     /*
         STEP 1C: Calculate the maximum price of all the toy records.
         Set it to a variable called `maxPrice`.
     */
-    // Your code here 
+    let maxPrice = await Toy.max('price')
 
     /*
         STEP 1D: Calculate the sum of the prices of all the toy records.
         Set it to a variable called `sumPrice`.
     */
-    // Your code here 
+    let sumPrice = await Toy.sum('price')
 
     res.json({
         count,
@@ -72,19 +72,22 @@ app.get('/cats/:catId', async (req, res, next) => {
         STEP 2B: Calculate the total amount of toys that the cat is
         associated with.
     */
-    // const toyCount;
+    const toyCount = toys.length;
 
     /*
         STEP 2C: Calculate the total price of all the toys that the cat is
         associated with
     */
-    // const toyTotalPrice;
+    let toyTotalPrice = 0;
+    for (let i = 0; i < toys.length; i++) {
+        toyTotalPrice += toys[i].price
+    }
 
     /*
         STEP 2D: Calculate the average price of all the toys that the cat is
         associated with
     */
-    // const toyAvgPrice;
+    const toyAvgPrice = toyTotalPrice / toyCount;
 
     res.json({
         toyCount,
