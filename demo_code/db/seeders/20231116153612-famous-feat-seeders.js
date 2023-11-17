@@ -20,7 +20,8 @@ module.exports = {
     {feat: 'became a pharaoh of Egypt'},
     {feat: 'defeated the hydra'},
     {feat: 'pulled Excalibur from the stone'},
-    {feat: 'killed Grendel'}
+    {feat: 'killed Grendel'},
+    {feat: 'multiple black belts'}
    ], {validate: true})
   },
 
