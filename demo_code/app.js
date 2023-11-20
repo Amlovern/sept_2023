@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const HerosRouter = require('./routes/heros');
 
+app.use('/styling', express.static('assets/css'));
 app.use(express.json());
 
 app.use('/heros', HerosRouter);
