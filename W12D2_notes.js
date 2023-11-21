@@ -38,11 +38,12 @@ Security
         !! Enforced by the browser !!
         CORS policies are just middleware
 
-    XSS
+    XSS attacks - Cross-Site Scripting
+        Being able to inject code into someone else's site
     
-    CSRF
+    CSRF (CSURF) attacks - Cross-Site Request(Resource) Forgery
+        When someone creates their own request and tricks another user into sending that request
 
-
-
+    Pretty common for XSS and CSRF attacks to happen together, but not always
 
 */
