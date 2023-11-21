@@ -16,14 +16,29 @@ app.use(express.json());
 app.get('/musicians', async (req, res, next) => {
     // Parse the query params, set default values, and create appropriate 
     // offset and limit values if necessary.
-    // Your code here 
+    let { page, size } = req.query;
+
+    // Set defaults
+    if (page === undefined) page = 1;
+    if (size === undefined) size = 5;
+
+    const pagination = {
+        limit: size,
+        offset: size * (page - 1)
+    };
+
+    // Remove pagination if either value is 0
+    if (parseInt(page) === 0 || size == 0) {
+        delete pagination.limit;
+        delete pagination.offset;
+    }
     
     // Query for all musicians
     // Include attributes for `id`, `firstName`, and `lastName`
     // Include associated bands and their `id` and `name`
     // Order by musician `lastName` then `firstName`
     const musicians = await Musician.findAll({ 
-        order: [['lastName'], ['firstName']], 
+        // order: [['lastName'], ['firstName']], 
         attributes: ['id', 'firstName', 'lastName'],
         include: [{
             model: Band,
@@ -31,7 +46,7 @@ app.get('/musicians', async (req, res, next) => {
         }],
         // add limit key-value to query
         // add offset key-value to query
-        // Your code here 
+        ...pagination
     });
 
     res.json(musicians)
