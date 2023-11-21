@@ -19,6 +19,17 @@ Search Features and Pagination
 
 
 Search Parameters
+    We can access search params in our req.query
+
+    3 scenarios:
+        Should take in a name query string and match partial hero names in the DB
+
+        Should take in a minYr query string to filter our longer hero names
+
+        Should take in a status query string to find all heros associated with the provided deityStatus
+
+    To avoid running into the same DRY issue that we ran into with pagination, we can establish a query object, and pass that into our query.
+        We can then check that a query string has been passed in, THEN assign that value to the queryObj.where
 
 
 Security

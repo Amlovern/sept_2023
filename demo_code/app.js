@@ -1,14 +1,15 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
-const { Hero } = require('./db/models');
+const { Op } = require("sequelize");
+const { Hero, DeityStatus } = require('./db/models');
 
 const HerosRouter = require('./routes/heros');
 
 app.use('/styling', express.static('assets/css'));
 app.use(express.json());
 
-app.get('/search', async (req, res) => {
+app.get('/pagination', async (req, res) => {
     let { page, size } = req.query;
     const pagination = {};
 
@@ -27,6 +28,40 @@ app.get('/search', async (req, res) => {
     const heros = await Hero.findAll({
         ...pagination
     });
+
+    res.json(heros)
+});
+
+app.get('/search', async (req, res) => {
+    const { name, minYr, status } = req.query;
+
+    const queryObj = {
+        where: {},
+        include: []
+    }
+
+    if (name) {
+        queryObj.where.name = {
+            [Op.substring]: name
+        };
+    };
+
+    if (minYr) {
+        queryObj.where.yearOfOrigin = {
+            [Op.gte]: minYr
+        };
+    };
+
+    if (status) {
+        queryObj.include.push({
+            model: DeityStatus,
+            where: {
+                name: status
+            }
+        });
+    };
+
+    const heros = await Hero.findAll(queryObj)
 
     res.json(heros)
 })
