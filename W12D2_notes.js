@@ -33,6 +33,14 @@ Search Parameters
 
 
 Security
+    CORS - Cross-Origin Resource Sharing
+        Allows other apps to send requests to our API
+        !! Enforced by the browser !!
+        CORS policies are just middleware
+
+    XSS
+    
+    CSRF
 
 
 
