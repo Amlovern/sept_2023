@@ -25,7 +25,7 @@ app.get('/pagination', async (req, res) => {
         delete pagination.offset;
     }
 
-    const heros = await Hero.findAll({
+    const heros = await Hero.scope(['orderByYear', 'defaultScope', {method: ['maxAge', 200]}]).findAll({
         ...pagination
     });
 

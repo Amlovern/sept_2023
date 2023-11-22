@@ -1,6 +1,7 @@
 'use strict';
 const {
-  Model
+  Model,
+  Op
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Hero extends Model {
@@ -55,6 +56,32 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Hero',
+    defaultScope: {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt']
+      }
+      // attributes: ['id', 'name', 'deityStatusId', 'famousFeatId', 'regionOfOrigin', 'weakness', 'mortalEnemy', 'yearOfOrigin']
+    },
+    scopes: {
+      nameRegionYear: {
+        attributes: ['name', 'regionOfOrigin', 'yearOfOrigin'],
+        order: [['yearOfOrigin']]
+      },
+      orderByYear: {
+        order: [['yearOfOrigin']]
+      },
+      maxAge(age) {
+        // yearOfOrigin % value === 0
+        let year = 2023 - age;
+        return {
+          where: {
+            yearOfOrigin: {
+              [Op.gte]: year
+            }
+          }
+        };
+      }
+    }
   });
   return Hero;
 };
