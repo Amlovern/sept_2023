@@ -54,6 +54,17 @@ JWT - JSON Web Token
         If the token has been tampered with, it will throw a JsonWebTokenError
         Can also take in a 3rd arg, which is a callback function
 
+Bcrypt
+    What we will be using to hash user passwords
+    Consists of: algo, cost factor, salt(22char), and hash
+    The cost factor tells bcrypt how many times to hash our password
+        This adds a level of annoyance to Rainbow Table attacks
+    We don't want to set the cost too high
+        Around 12-13 is the recommendation
 
+    We use the .hashSync method to hash a password
+    We use the .compareSync method to compare the provided password with the stored, hashed password
 
+    Link to an article about password hashing:
+    https://stytch.com/blog/what-is-password-hashing/
 */
